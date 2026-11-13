@@ -1,0 +1,12 @@
+{
+  "name": "food-score-v1",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "type": "module",
+  "description": "A simple static daily food-habit check-in with GitHub Actions and GitHub Pages deployment.",
+  "scripts": {
+    "check": "node --check js/app.js && node --check js/data.js && node --check js/scoring.js",
+    "test": "node --test"
+  }
+}

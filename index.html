@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6ef">
+  <meta name="description" content="A simple, private daily food-habit check-in. Choose food groups, record water, and review an educational score." />
+  <title>FOOD-SCORE — Your daily food check-in</title>
+  <link rel="icon" href="./assets/food-score-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#daily-check">Skip to daily check-in</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="FOOD-SCORE home">
+        <span class="brand-mark" aria-hidden="true">F<span>+</span></span>
+        <span class="brand-name">FOOD<span>-SCORE</span></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#daily-check">Daily check-in</a>
+        <a href="#score-guide">How scoring works</a>
+      </nav>
+      <a class="header-cta" href="#daily-check">Start check-in <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero page-wrap" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A SIMPLE DAILY FOOD-HABIT CHECK</div>
+        <h1 id="heroTitle">Your day.<br><em>One clear picture.</em></h1>
+        <p class="hero-lead">No calorie counting. No long forms. Just tap the food groups you had, record your water, and see a simple review of your day.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#daily-check">Start today's check <span aria-hidden="true">→</span></a>
+          <span class="hero-time"><span aria-hidden="true">◷</span> About 2–3 minutes</span>
+        </div>
+        <div class="hero-trust">
+          <span><b aria-hidden="true">✓</b> No sign-up</span>
+          <span><b aria-hidden="true">✓</b> No saved diary</span>
+          <span><b aria-hidden="true">✓</b> Easy tap-to-select</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of a balanced plate">
+        <div class="visual-glow"></div>
+        <div class="plate-wrap">
+          <div class="plate-ring">
+            <div class="plate-section plate-vegetables"><span>🥦</span><span>🥕</span><span>🥬</span></div>
+            <div class="plate-section plate-grains"><span>🌾</span></div>
+            <div class="plate-section plate-protein"><span>🫘</span><span>🥚</span></div>
+            <span class="plate-cross plate-cross-v"></span><span class="plate-cross plate-cross-h"></span>
+            <div class="plate-label"><small>YOUR</small><strong>daily<br>plate</strong></div>
+          </div>
+        </div>
+        <div class="float-note note-fruit"><span>🍎</span><span><strong>More variety</strong><small>పండ్లు · కూరగాయలు</small></span></div>
+        <div class="float-note note-water"><span>💧</span><span><strong>Remember water</strong><small>నీళ్లు తాగండి</small></span></div>
+        <div class="visual-caption">AWARENESS, NOT PERFECTION</div>
+      </div>
+    </section>
+
+    <section class="principles page-wrap" aria-label="How it works">
+      <div><span class="principle-number">01</span><span><strong>Tap</strong><small>Choose food groups</small></span></div>
+      <div><span class="principle-number">02</span><span><strong>Track</strong><small>Add simple portions</small></span></div>
+      <div><span class="principle-number">03</span><span><strong>Review</strong><small>See your daily score</small></span></div>
+    </section>
+
+    <section class="check-section page-wrap" id="daily-check" aria-labelledby="checkTitle">
+      <div class="section-heading check-heading">
+        <div>
+          <div class="eyebrow">YOUR DAILY CHECK-IN</div>
+          <h2 id="checkTitle">Let's record your day.</h2>
+          <p class="section-subtitle">Think back from morning to bedtime. Choose a category whenever you had something from that group.</p>
+        </div>
+        <label class="date-control" for="diaryDate"><span>Diary date</span><input id="diaryDate" type="date"></label>
+      </div>
+
+      <div class="privacy-banner"><span class="privacy-icon" aria-hidden="true">⌑</span><p><strong>Your diary stays private.</strong> Entries remain only in this open page. Nothing is sent to a server or saved as history. Refreshing or closing the page clears your check-in.</p></div>
+
+      <div class="progress-panel" aria-live="polite">
+        <div class="progress-copy"><strong id="progressTitle">Your day is just getting started</strong><span id="progressMeta">0 of 7 time slots recorded</span></div>
+        <div class="progress-track" role="progressbar" aria-label="Diary completion" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="completionProgress"><span id="completionFill"></span></div>
+      </div>
+
+      <div class="diary-layout">
+        <div class="meal-column">
+          <div class="meal-column-heading"><div><h3>From morning to bedtime</h3><p>Open a time slot, then tap the food groups you remember.</p></div><span class="meal-column-badge">7 TIME SLOTS</span></div>
+          <div id="mealList" class="meal-list"></div>
+        </div>
+
+        <aside class="summary-column" aria-label="Live diary summary">
+          <section class="summary-card water-card">
+            <div class="summary-kicker"><span class="summary-icon water-symbol">💧</span><span>WATER CHECK</span></div>
+            <h3>Water through the day</h3>
+            <p>Record plain-water glasses in each time slot.</p>
+            <div class="water-total-line"><strong id="waterTotal">0</strong><span>glasses recorded</span></div>
+            <div class="water-progress"><span id="waterProgressFill"></span></div>
+            <div class="water-scale"><span>0</span><span>8-glass reference</span></div>
+            <p class="micro-note">1 glass ≈ 250 ml. This is a general reference, not a personal target. Follow clinician guidance if you have fluid restrictions.</p>
+          </section>
+          <section class="summary-card snapshot-card">
+            <div class="summary-kicker"><span class="summary-icon snapshot-symbol">✳</span><span>YOUR SNAPSHOT</span></div>
+            <div class="snapshot-stat"><strong id="foodCount">0</strong><span>food-group servings</span></div>
+            <div class="snapshot-stat"><strong id="loggedSlots">0/7</strong><span>time slots with entries</span></div>
+            <p class="snapshot-tip" id="snapshotTip">Start by opening your first time slot. You can change any entry before calculating.</p>
+          </section>
+          <section class="summary-card portion-card">
+            <div class="summary-kicker"><span class="summary-icon portion-symbol">🥄</span><span>PORTION GUIDE</span></div>
+            <h3>What is one serving?</h3>
+            <ul class="portion-list">
+              <li><span>🍌</span><span><strong>Fruit</strong><small>1 medium fruit or a small bowl</small></span></li>
+              <li><span>🥬</span><span><strong>Vegetables</strong><small>1 small katori or a cup of salad</small></span></li>
+              <li><span>🥣</span><span><strong>Dal / beans</strong><small>1 small katori</small></span></li>
+              <li><span>🥛</span><span><strong>Milk / curd</strong><small>1 glass or a small bowl</small></span></li>
+              <li><span>🥜</span><span><strong>Nuts / seeds</strong><small>1 small handful</small></span></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <section class="safety-panel" aria-labelledby="safetyTitle">
+        <div class="safety-intro"><span class="safety-mark">✦</span><div><h3 id="safetyTitle">A quick food-safety check</h3><p>Three simple questions about how food and water were handled today.</p></div><span class="safety-points">5 POINTS</span></div>
+        <div class="safety-options">
+          <label class="safety-option"><input id="safeWater" type="checkbox"><span class="fake-check" aria-hidden="true"></span><span class="safety-copy"><strong>Safe drinking water</strong><small>I used water that I consider safe to drink.</small></span><b>2 pts</b></label>
+          <label class="safety-option"><input id="cleanHands" type="checkbox"><span class="fake-check" aria-hidden="true"></span><span class="safety-copy"><strong>Clean hands and produce</strong><small>I washed my hands before food and washed raw fruits/vegetables.</small></span><b>2 pts</b></label>
+          <label class="safety-option"><input id="safeStorage" type="checkbox"><span class="fake-check" aria-hidden="true"></span><span class="safety-copy"><strong>Safe cooking and storage</strong><small>I handled, cooked and stored food safely.</small></span><b>1 pt</b></label>
+        </div>
+      </section>
+
+      <div class="calculate-panel">
+        <div><strong>Finished recording your day?</strong><span>Review your entries, then calculate your score.</span></div>
+        <button id="calculateBtn" class="primary-btn calculate-btn" type="button">Calculate my score <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="results" class="results-section page-wrap" hidden aria-labelledby="resultsTitle" aria-live="polite">
+      <div class="results-heading"><div><div class="eyebrow">YOUR DAILY SUMMARY</div><h2 id="resultsTitle">Your Food Habit Score</h2><p>One day is a snapshot. Use it as a starting point, not a judgement.</p></div><button id="editDiaryBtn" class="secondary-btn" type="button">← Edit diary</button></div>
+      <div class="results-layout">
+        <article class="result-score-card">
+          <div class="score-ring" id="scoreRing"><div class="score-ring-inner"><strong id="scoreNumber">0</strong><span>out of 100</span></div></div>
+          <div id="scoreVerdict" class="score-verdict">Your day, reviewed.</div>
+          <p id="scoreMessage">Small steps can make tomorrow easier.</p>
+          <small class="score-disclaimer">An educational FOOD-SCORE result — not a medical assessment.</small>
+        </article>
+        <article class="breakdown-card"><div class="breakdown-heading"><div><span class="small-label">WHERE YOUR POINTS CAME FROM</span><h3>Category breakdown</h3></div><span class="max-points">MAX 100</span></div><div id="scoreBreakdown" class="score-breakdown"></div></article>
+      </div>
+      <div class="recommendations-grid">
+        <article class="recommendation-card"><span class="recommendation-icon">🌱</span><div><span class="small-label">ONE THING TO KEEP</span><h3 id="strengthTitle">Your positive habit</h3><p id="strengthText">Keep building on the choices that worked well today.</p></div></article>
+        <article class="recommendation-card improvement-card"><span class="recommendation-icon">💡</span><div><span class="small-label">A SMALL STEP FOR TOMORROW</span><h3 id="improvementTitle">One simple improvement</h3><p id="improvementText">Choose one practical change that feels manageable.</p></div></article>
+      </div>
+      <div class="result-actions"><button id="printBtn" class="secondary-btn" type="button">Print this result</button><button id="newDiaryBtn" class="primary-btn" type="button">Start a new day <span aria-hidden="true">↗</span></button></div>
+      <p class="result-disclaimer">This result reflects only the entries and FOOD-SCORE V1 rules. It cannot diagnose a condition, measure nutritional status, or predict health or disease outcomes.</p>
+    </section>
+
+    <section class="guide-section page-wrap" id="score-guide">
+      <div class="guide-heading"><div><div class="eyebrow">TRANSPARENT BY DESIGN</div><h2>How the 100 points work</h2></div><p>Simple food-group and frequency rules. The scoring model is educational and is not an official ICMR-NIN or WHO score.</p></div>
+      <div class="guide-grid">
+        <div class="guide-card"><span>01</span><div><strong>Food variety</strong><small>Fruit, vegetables, grains, protein, dairy, nuts and balanced meals.</small></div><b>58 pts</b></div>
+        <div class="guide-card"><span>02</span><div><strong>Daily habits</strong><small>Water, added sugar, fried/processed foods and high-salt foods.</small></div><b>37 pts</b></div>
+        <div class="guide-card"><span>03</span><div><strong>Food safety</strong><small>Safe drinking water, clean hands/produce, cooking and storage.</small></div><b>5 pts</b></div>
+      </div>
+      <details class="full-rubric"><summary>View the scoring categories and point limits</summary>
+        <div class="rubric-table-wrap"><table class="rubric-table"><thead><tr><th>Category</th><th>Maximum</th><th>What is counted</th></tr></thead><tbody>
+          <tr><td>Whole fruits</td><td>8</td><td>Approximate whole-fruit servings</td></tr>
+          <tr><td>Vegetables and leafy greens</td><td>12</td><td>Vegetable servings and leafy-green inclusion</td></tr>
+          <tr><td>Whole grains and millets</td><td>8</td><td>Whole-grain share of logged grain servings</td></tr>
+          <tr><td>Pulses and protein foods</td><td>10</td><td>Main meals containing a pulse or protein food</td></tr>
+          <tr><td>Milk, curd or suitable alternatives</td><td>5</td><td>Approximate servings</td></tr>
+          <tr><td>Nuts and seeds</td><td>5</td><td>Small-handful servings</td></tr>
+          <tr><td>Balanced main meals</td><td>10</td><td>Breakfast, lunch and dinner with grain + vegetable + protein</td></tr>
+          <tr><td>Water intake</td><td>10</td><td>Glasses recorded across all time slots</td></tr>
+          <tr><td>Added sugar and sweetened drinks</td><td>10</td><td>Logged servings; fewer earns more points</td></tr>
+          <tr><td>Fried and highly processed foods</td><td>10</td><td>Logged servings; fewer earns more points</td></tr>
+          <tr><td>High-salt foods and extra salt</td><td>7</td><td>Logged servings; fewer earns more points</td></tr>
+          <tr><td>Food safety and hygiene</td><td>5</td><td>Three self-reported safety checkboxes</td></tr>
+        </tbody></table></div>
+      </details>
+      <div class="guideline-note"><span aria-hidden="true">i</span><p><strong>Guideline note.</strong> Food-group themes are inspired by the <a href="https://www.nin.res.in/dietaryguidelines/pdfjs/locale/DGI_2024.pdf" target="_blank" rel="noopener">ICMR-NIN Dietary Guidelines for Indians 2024</a> and the <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener">WHO healthy-diet guidance</a>. Point weights, serving thresholds and feedback bands are proposed product rules; they are not clinically validated.</p></div>
+    </section>
+
+    <section class="closing-banner page-wrap"><div><div class="eyebrow">A BETTER TOMORROW STARTS SMALL</div><h2>Progress, not perfection.</h2><p>Notice your habits. Pick one realistic change. Keep learning.</p></div><a href="#daily-check">Check your day again ↑</a></section>
+  </main>
+
+  <footer class="footer"><a class="brand" href="#top"><span class="brand-mark">F<span>+</span></span><span class="brand-name">FOOD<span>-SCORE</span></span></a><p>Daily food-habit awareness · V1.0</p><p>Educational project · Not medical advice</p></footer>
+  <noscript><div class="noscript">FOOD-SCORE needs JavaScript to record food groups and calculate a score. Please enable JavaScript and reload this page.</div></noscript>
+</body>
+</html>
